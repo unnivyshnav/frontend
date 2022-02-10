@@ -34,11 +34,13 @@ export default function TopBar() {
               CONTACT
             </Link>
           </li>
+
           <li className="topListItem">
             <Link className="link" to="/write">
-              WRITE
+              ADD POST
             </Link>
           </li>
+
           <li className="topListItem" onClick={handleLogout}>
             {user && "LOGOUT"}
           </li>
