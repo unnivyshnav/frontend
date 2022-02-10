@@ -48,7 +48,7 @@ export default function TopBar() {
       <div className="topRight">
         {user ? (
           <ul className="topList">
-            <li>
+            {/* <li>
               <Link to="/settings">
                 <img
                   className="topImg"
@@ -56,7 +56,7 @@ export default function TopBar() {
                   alt={user.username}
                 />
               </Link>
-            </li>
+            </li> */}
             <li className="topListItem">
               <Link className="link" to="/settings">
                 {user.username}
