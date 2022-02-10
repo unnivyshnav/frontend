@@ -17,7 +17,9 @@ export default function SinglePost() {
 
   useEffect(() => {
     const getPost = async () => {
-      const res = await axios.get("https://myblogapion.herokuapp.com/api/posts/" + path);
+      const res = await axios.get(
+        "https://myblogapion.herokuapp.com/api/posts/" + path
+      );
       setPost(res.data);
       setTitle(res.data.title);
       setDesc(res.data.desc);
@@ -73,7 +75,7 @@ export default function SinglePost() {
         ) : (
           <h1 className="singlePostTitle">
             {title}
-            {(post.username === user?.username || user.isAdmin) && (
+            {user.isAdmin && (
               <div className="singlePostEdit">
                 <i
                   className="singlePostIcon far fa-edit"
