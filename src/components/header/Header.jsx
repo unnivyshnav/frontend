@@ -10,7 +10,7 @@ export default function Header() {
       </div>
       <img
         className="headerImage"
-        src="https://media-exp1.licdn.com/dms/image/C4E1BAQFYockRtvX8UA/company-background_10000/0/1600518810815?e=1644300000&v=beta&t=FQLzeWhi6DajWyPboghrU2oj4PcY_-nZfqzejeYNNgA"
+        src="https://i.ibb.co/ZJH9Qxb/pexels-pixabay-414102.jpghttps://i.ibb.co/ZJH9Qxb/pexels-pixabay-414102.jpg"
         alt=""
       />
     </div>
