@@ -12,7 +12,7 @@ export default function Settings() {
   const [success, setSuccess] = useState(false);
 
   const { user, dispatch } = useContext(Context);
-  const PF = "http://localhost:5000/images/";
+  const PF = "https://myblogapion.herokuapp.com/images/";
 
   const handleSubmit = async (e) => {
     e.preventDefault();
@@ -30,12 +30,12 @@ export default function Settings() {
       data.append("file", file);
       updatedUser.profilePic = filename;
       try {
-        await axios.post("http://localhost:5000/api/upload", data);
+        await axios.post("https://myblogapion.herokuapp.com/api/upload", data);
       } catch (err) {}
     }
     try {
       const res = await axios.put(
-        "http://localhost:5000/api/users/" + user._id,
+        "https://myblogapion.herokuapp.com/api/users/" + user._id,
         updatedUser
       );
       setSuccess(true);

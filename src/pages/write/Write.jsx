@@ -25,13 +25,17 @@ export default function Write() {
       data.append("file", file);
       newPost.photo = filename;
       try {
-        await axios.post("http://localhost:5000/api/upload", data);
+        await axios.post("https://myblogapion.herokuapp.com/api/upload", data);
       } catch (err) {}
     }
     try {
-      const res = await axios.post("http://localhost:5000/api/posts", newPost, {
-        headers: { token: "Bearer " + user.accessToken },
-      });
+      const res = await axios.post(
+        "https://myblogapion.herokuapp.com/api/posts",
+        newPost,
+        {
+          headers: { token: "Bearer " + user.accessToken },
+        }
+      );
       window.location.replace("/post/" + res.data._id);
     } catch (err) {}
   };
