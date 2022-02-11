@@ -1,5 +1,5 @@
 import axios from "axios";
-import { useContext, useRef } from "react";
+import { useContext, useRef, useState } from "react";
 import { Link } from "react-router-dom";
 import { Context } from "../../context/Context";
 import "./Login.css";
@@ -8,10 +8,16 @@ export default function Login() {
   const userRef = useRef();
   const passwordRef = useRef();
   const { user, dispatch, isFetching } = useContext(Context);
+  const [wrong, setWrong] = useState("");
 
   const handleSubmit = async (e) => {
     e.preventDefault();
     dispatch({ type: "LOGIN_START" });
+    if (!userRef.current.value) {
+      alert("username required");
+    } else if (!passwordRef.current.value) {
+      alert("password required");
+    }
     try {
       const res = await axios.post(
         "https://myblogapion.herokuapp.com/api/auth/login",
@@ -23,10 +29,9 @@ export default function Login() {
       dispatch({ type: "LOGIN_SUCCESS", payload: res.data });
     } catch (err) {
       dispatch({ type: "LOGIN_FAILURE" });
+      setWrong("Wrong Credentials");
     }
   };
-
-  console.log(user);
 
   return (
     <div className="login">
@@ -39,6 +44,7 @@ export default function Login() {
           placeholder="Enter your username..."
           ref={userRef}
         />
+
         <label>Password</label>
         <input
           type="password"
@@ -55,6 +61,7 @@ export default function Login() {
           Register
         </Link>
       </button>
+      <p>{wrong}</p>
     </div>
   );
 }

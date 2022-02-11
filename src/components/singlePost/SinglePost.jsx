@@ -17,9 +17,9 @@ export default function SinglePost() {
 
   useEffect(() => {
     const getPost = async () => {
-      const res = await axios.get(
-        "https://myblogapion.herokuapp.com/api/posts/" + path
-      );
+      const res = await axios.get("https://myblogapion.herokuapp.com/api/posts/" + path, {
+        headers: { token: "Bearer " + user.accessToken },
+      });
       setPost(res.data);
       setTitle(res.data.title);
       setDesc(res.data.desc);
@@ -75,17 +75,18 @@ export default function SinglePost() {
         ) : (
           <h1 className="singlePostTitle">
             {title}
-
-            <div className="singlePostEdit">
-              <i
-                className="singlePostIcon far fa-edit"
-                onClick={() => setUpdateMode(true)}
-              ></i>
-              <i
-                className="singlePostIcon far fa-trash-alt"
-                onClick={handleDelete}
-              ></i>
-            </div>
+            {post.username === user?.username && (
+              <div className="singlePostEdit">
+                <i
+                  className="singlePostIcon far fa-edit"
+                  onClick={() => setUpdateMode(true)}
+                ></i>
+                <i
+                  className="singlePostIcon far fa-trash-alt"
+                  onClick={handleDelete}
+                ></i>
+              </div>
+            )}
           </h1>
         )}
         <div className="singlePostInfo">

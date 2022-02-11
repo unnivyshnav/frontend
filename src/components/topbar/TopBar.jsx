@@ -40,10 +40,11 @@ export default function TopBar() {
               ADD POST
             </Link>
           </li>
-
-          <li className="topListItem" onClick={handleLogout}>
-            {user && "LOGOUT"}
-          </li>
+          <Link className="link" to="/">
+            <li className="topListItem" onClick={handleLogout}>
+              {user && "LOGOUT"}
+            </li>
+          </Link>
         </ul>
       </div>
       <div className="topRight">
