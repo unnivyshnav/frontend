@@ -36,7 +36,7 @@ export default function Register() {
         const password = formValues.password;
         const email = formValues.email;
         const res = await axios.post(
-          "https://myblogapion.herokuapp.com/auth/register",
+          "https://myblogapion.herokuapp.com/api/auth/register",
           {
             username,
             email,
