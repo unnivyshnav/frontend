@@ -17,15 +17,18 @@ export default function SinglePost() {
 
   useEffect(() => {
     const getPost = async () => {
-      const res = await axios.get("https://myblogapion.herokuapp.com/api/posts/" + path, {
-        headers: { token: "Bearer " + user.accessToken },
-      });
+      const res = await axios.get(
+        "https://myblogapion.herokuapp.com/api/posts/" + path,
+        {
+          headers: { token: "Bearer " + user.accessToken },
+        }
+      );
       setPost(res.data);
       setTitle(res.data.title);
       setDesc(res.data.desc);
     };
     getPost();
-  }, [path]);
+  }, [path, user.accessToken]);
 
   const handleDelete = async () => {
     try {
